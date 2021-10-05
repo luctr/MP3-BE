@@ -22,12 +22,13 @@ public class Song {
     private Reaction reaction;
     @ManyToOne
     private Comment comment;
+    private Long count;
 
 
     public Song() {
     }
 
-    public Song(Long id, String name, String avatar, String file, String description, String author, SongCategory songCategory, Singer singer, User user, Reaction reaction, Comment comment) {
+    public Song(Long id, String name, String avatar, String file, String description, String author, SongCategory songCategory, Singer singer, User user, Reaction reaction, Comment comment, Long count) {
         this.id = id;
         this.name = name;
         this.avatar = avatar;
@@ -39,6 +40,15 @@ public class Song {
         this.user = user;
         this.reaction = reaction;
         this.comment = comment;
+        this.count = count;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     public Long getId() {
