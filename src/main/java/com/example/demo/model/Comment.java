@@ -16,5 +16,7 @@ public class Comment {
     private Long id;
     private String name;
     @ManyToOne
-    private Reaction reaction;
+    private User user;
+    @OneToOne
+    private Song song;
 }
