@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,7 +17,10 @@ public class Playlist {
     private Long id;
     private String name;
     @ManyToOne
-    private User user;
+    private SongCategory songCategory;
+    private String description;
     @ManyToOne
-    private Song song;
+    private User user;
+    @ManyToMany
+    private List<Song> song;
 }

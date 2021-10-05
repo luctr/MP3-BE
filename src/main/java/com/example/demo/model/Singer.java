@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,10 +17,14 @@ public class Singer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String avatar;
-    private Long age;
-    private String stageName;
-    private String description;
+    private String sex;
+    private String dateOfBirth;
+    private String story;
+    private String yearOfBirth;
+    private String musicBand;
+    @OneToMany
+    private List<Song>songs;
+    private String MoreInformation ;
     @ManyToOne
     private User user;
 
