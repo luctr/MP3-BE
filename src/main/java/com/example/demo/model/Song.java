@@ -27,9 +27,8 @@ public class Song {
     private SongCategory songCategory;
     @ManyToOne
     private Reaction reaction;
-    @ManyToOne
-    private Album album;
-
+    @ManyToMany
+    private List<Playlist> playlist;
 
 
 }
