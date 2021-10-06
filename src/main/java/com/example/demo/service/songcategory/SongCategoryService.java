@@ -22,9 +22,8 @@ public class SongCategoryService implements ISongCategoryService {
     }
 
     @Override
-    public User save(SongCategory songCategory) {
+    public void save(SongCategory songCategory) {
         songCategoryRepository.save(songCategory);
-        return null;
     }
 
     @Override

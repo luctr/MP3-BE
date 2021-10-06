@@ -10,7 +10,7 @@ public interface Generic<T> {
 
     Optional<T> findById(Long id);
 
-    User save(T t);
+    void save(T t);
 
     void delete(Long id);
 }

@@ -22,9 +22,9 @@ public class ReactionService implements IReactionService {
     }
 
     @Override
-    public User save(Reaction reaction) {
+    public void save(Reaction reaction) {
         reactionRepository.save(reaction);
-        return null;
+
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.example.demo.model.User;
 import com.example.demo.security.jwt.JwtProvider;
 import com.example.demo.security.userPrinciple.UserPrinciple;
 import com.example.demo.service.role.RoleServiceImpl;
-import com.example.demo.service.user.UserServiceImpl;
+import com.example.demo.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,7 @@ import java.util.Set;
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
     @Autowired
     RoleServiceImpl roleService;
     @Autowired

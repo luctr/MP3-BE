@@ -23,9 +23,8 @@ public class CommentService  implements ICommentService{
     }
 
     @Override
-    public User save(Comment comment) {
+    public void save(Comment comment) {
         commentRepository.save(comment);
-        return null;
     }
 
     @Override
