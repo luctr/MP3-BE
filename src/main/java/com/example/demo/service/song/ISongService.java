@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface ISongService extends Generic<Song> {
-List<Song> getSongByName(String name);
+    List<Song> getSongByName(String name);
 }
