@@ -20,5 +20,7 @@ public class Comment {
     @ManyToOne
     private Song song;
     @ManyToOne
-    private Reaction reaction;
+    private User user;
+    @OneToOne
+    private Song song;
 }
