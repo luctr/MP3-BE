@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface SingerRepository extends JpaRepository<Singer,Long> {
-    List<Singer> findByNameContaining(String keywords);
+    List<Singer> findByName(String keyword);
 
 }

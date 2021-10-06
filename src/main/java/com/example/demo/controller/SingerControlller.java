@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Singer;
-import com.example.demo.model.Song;
-import com.example.demo.repository.SingerRepository;
 import com.example.demo.service.singer.SingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +25,12 @@ public class SingerControlller {
         return new ResponseEntity<>(singers, HttpStatus.OK);
     }
 
-    @GetMapping("/singer/keyword")
-    public ResponseEntity<List<Singer>> getSingerByName(@RequestParam String name) {
+    @GetMapping("/keyword")
+    public ResponseEntity<List<Singer>> getSingerByName(String name) {
+        List<Singer> singers =  singerService.getSingerByName(name);
+        if(singers.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(singerService.getSingerByName(name),HttpStatus.OK);
     }
 }
