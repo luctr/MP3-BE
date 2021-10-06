@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
-import lombok.*;
-
 import javax.persistence.*;
-import java.util.List;
+
 @Entity
 public class Song {
     @Id
@@ -14,29 +12,37 @@ public class Song {
     private String mp3;
     private String avatar;
     private String author;
-    @ManyToMany
-    private  List<Singer>singers;
     @ManyToOne
     private User user;
     @ManyToOne
     private SongCategory songCategory;
     @ManyToOne
-    private Reaction reaction;
-    @ManyToMany
-    private List<Playlist> playlist;
+    private Singer singer;
 
-    public Song(Long id, String name, String description, String mp3, String avatar, String author, List<Singer> singers, User user, SongCategory songCategory, Reaction reaction, List<Playlist> playlist) {
+    public Song(Long id, String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.mp3 = mp3;
         this.avatar = avatar;
         this.author = author;
-        this.singers = singers;
         this.user = user;
         this.songCategory = songCategory;
-        this.reaction = reaction;
-        this.playlist = playlist;
+        this.singer = singer;
+    }
+
+    public Song(String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
+        this.name = name;
+        this.description = description;
+        this.mp3 = mp3;
+        this.avatar = avatar;
+        this.author = author;
+        this.user = user;
+        this.songCategory = songCategory;
+        this.singer = singer;
+    }
+
+    public Song() {
     }
 
     public Long getId() {
@@ -87,14 +93,6 @@ public class Song {
         this.author = author;
     }
 
-    public List<Singer> getSingers() {
-        return singers;
-    }
-
-    public void setSingers(List<Singer> singers) {
-        this.singers = singers;
-    }
-
     public User getUser() {
         return user;
     }
@@ -111,19 +109,11 @@ public class Song {
         this.songCategory = songCategory;
     }
 
-    public Reaction getReaction() {
-        return reaction;
+    public Singer getSinger() {
+        return singer;
     }
 
-    public void setReaction(Reaction reaction) {
-        this.reaction = reaction;
-    }
-
-    public List<Playlist> getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(List<Playlist> playlist) {
-        this.playlist = playlist;
+    public void setSinger(Singer singer) {
+        this.singer = singer;
     }
 }
