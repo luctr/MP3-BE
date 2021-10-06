@@ -30,5 +30,4 @@ public class Song {
     @ManyToMany
     private List<Playlist> playlist;
 
-
 }

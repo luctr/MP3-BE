@@ -22,8 +22,6 @@ public class Singer {
     private String story;
     private String yearOfBirth;
     private String musicBand;
-    @OneToMany
-    private List<Song>songs;
     private String MoreInformation ;
     @ManyToOne
     private User user;
