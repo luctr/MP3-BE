@@ -8,47 +8,41 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String avatar;
-    private String file;
     private String description;
+    private String mp3;
+    private String avatar;
     private String author;
+    @ManyToOne
+    private User user;
     @ManyToOne
     private SongCategory songCategory;
     @ManyToOne
     private Singer singer;
-    @ManyToOne
-    private User user;
-    @ManyToOne
-    private Reaction reaction;
-    @ManyToOne
-    private Comment comment;
-    private Long count;
 
-
-    public Song() {
-    }
-
-    public Song(Long id, String name, String avatar, String file, String description, String author, SongCategory songCategory, Singer singer, User user, Reaction reaction, Comment comment, Long count) {
+    public Song(Long id, String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
         this.id = id;
         this.name = name;
-        this.avatar = avatar;
-        this.file = file;
         this.description = description;
+        this.mp3 = mp3;
+        this.avatar = avatar;
         this.author = author;
+        this.user = user;
         this.songCategory = songCategory;
         this.singer = singer;
+    }
+
+    public Song(String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
+        this.name = name;
+        this.description = description;
+        this.mp3 = mp3;
+        this.avatar = avatar;
+        this.author = author;
         this.user = user;
-        this.reaction = reaction;
-        this.comment = comment;
-        this.count = count;
+        this.songCategory = songCategory;
+        this.singer = singer;
     }
 
-    public Long getCount() {
-        return count;
-    }
-
-    public void setCount(Long count) {
-        this.count = count;
+    public Song() {
     }
 
     public Long getId() {
@@ -67,22 +61,6 @@ public class Song {
         this.name = name;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -91,12 +69,36 @@ public class Song {
         this.description = description;
     }
 
+    public String getMp3() {
+        return mp3;
+    }
+
+    public void setMp3(String mp3) {
+        this.mp3 = mp3;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public SongCategory getSongCategory() {
@@ -113,29 +115,5 @@ public class Song {
 
     public void setSinger(Singer singer) {
         this.singer = singer;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Reaction getReaction() {
-        return reaction;
-    }
-
-    public void setReaction(Reaction reaction) {
-        this.reaction = reaction;
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
     }
 }
