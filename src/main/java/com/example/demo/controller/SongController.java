@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Singer;
 import com.example.demo.model.Song;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.service.song.SongService;
@@ -56,7 +57,7 @@ public class SongController {
         if (!songOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        song.setId(songOptional.get().getId());
+//        song.setId(songOptional.get().getId());
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -75,5 +76,6 @@ public class SongController {
     @GetMapping("/songs/keyword")
     public ResponseEntity<List<Song>> getSongByName(@RequestParam String name) {
         return new ResponseEntity<>(songService.getSongByName(name),HttpStatus.OK);
+
     }
 }

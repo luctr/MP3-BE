@@ -7,6 +7,7 @@ import com.example.demo.repository.SingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,5 +33,10 @@ public class SingerService implements ISingerService{
     @Override
     public void delete(Long id) {
         singerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Singer> getSingerByName(String name) {
+        return singerRepository.findByNameContaining(name);
     }
 }
