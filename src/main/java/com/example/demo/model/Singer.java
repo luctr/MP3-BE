@@ -1,25 +1,28 @@
 package com.example.demo.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Singer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String avatar;
-    private Long age;
-    private String stageName;
-    private String description;
+    private String sex;
+    private String dateOfBirth;
+    private String story;
+    private String yearOfBirth;
+    private String musicBand;
+    private String MoreInformation ;
     @ManyToOne
     private User user;
 
