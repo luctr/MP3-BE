@@ -1,8 +1,6 @@
 package com.example.demo.service.singer;
 
-import com.example.demo.model.Comment;
 import com.example.demo.model.Singer;
-import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.SingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +30,10 @@ public class SingerService implements ISingerService{
     @Override
     public void delete(Long id) {
         singerRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Singer> findAllByUser_Id(Long id) {
+        return singerRepository.findAllByUser_Id(id);
     }
 }

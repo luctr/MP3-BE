@@ -15,11 +15,13 @@ import java.util.Optional;
 public class SingerController {
     @Autowired
     private ISingerService singerService;
+
     @GetMapping
-    public ResponseEntity<Iterable<Singer>> findAll(){
-        Iterable<Singer> singerIterable= singerService.findAll();
+    public ResponseEntity<Iterable<Singer>> findAll() {
+        Iterable<Singer> singerIterable = singerService.findAll();
         return new ResponseEntity<>(singerIterable, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Singer> findById(@PathVariable Long id) {
         Optional<Singer> singerOptional = singerService.findById(id);
@@ -36,9 +38,9 @@ public class SingerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer){
-        Optional< Singer> singerOptional = singerService.findById(id);
-        if(!singerOptional.isPresent()){
+    public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer) {
+        Optional<Singer> singerOptional = singerService.findById(id);
+        if (!singerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         singer.setId(id);
@@ -47,13 +49,19 @@ public class SingerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Singer> deleteById(@PathVariable Long id){
+    public ResponseEntity<Singer> deleteById(@PathVariable Long id) {
         Optional<Singer> singerOptional = singerService.findById(id);
-        if(!singerOptional.isPresent()){
+        if (!singerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         singerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Iterable<Singer>> findAllUser(@PathVariable Long id) {
+        Iterable<Singer> singerIterable = singerService.findAllByUser_Id(id);
+        return new ResponseEntity<>(singerIterable, HttpStatus.OK);
     }
 }
 

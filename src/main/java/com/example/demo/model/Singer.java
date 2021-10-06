@@ -1,16 +1,8 @@
 package com.example.demo.model;
 
-
-import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 public class Singer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,7 +92,7 @@ public class Singer {
     public Singer() {
     }
 
-    public Singer(Long id, String name, String sex, String dateOfBirth, String story, String yearOfBirth, String musicBand, String moreInformation, User user) {
+    public Singer(String name, String sex, String dateOfBirth, String story, String yearOfBirth, String musicBand, String moreInformation, User user) {
         this.id = id;
         this.name = name;
         this.sex = sex;
