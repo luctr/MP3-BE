@@ -23,8 +23,6 @@ public class SongController {
     @Autowired
     private SongService songService;
 
-    @Autowired
-    private SongRepository songRepository;
 
     @GetMapping
     public ResponseEntity<Iterable<Song>> findAllSongs() {

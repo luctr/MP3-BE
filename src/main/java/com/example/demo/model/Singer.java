@@ -4,6 +4,7 @@ package com.example.demo.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -20,13 +21,8 @@ public class Singer {
     private String MoreInformation ;
     @ManyToOne
     private User user;
-
-<<<<<<< HEAD
-    public Singer() {
-    }
-
-
-=======
+    @ManyToMany
+    private List<Song> songList;
     public Long getId() {
         return id;
     }
@@ -113,5 +109,4 @@ public class Singer {
         MoreInformation = moreInformation;
         this.user = user;
     }
->>>>>>> 4750dd1c7785fc7fbe900658462aa2b95b12e25d
 }

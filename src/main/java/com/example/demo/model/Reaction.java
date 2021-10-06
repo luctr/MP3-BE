@@ -13,7 +13,7 @@ public class Reaction {
     private Boolean status;
     @ManyToOne
     private User user;
-    @OneToOne
+    @ManyToOne
     private Song song;
 
     public Reaction() {

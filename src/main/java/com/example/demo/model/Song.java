@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,14 +13,12 @@ public class Song {
     private String mp3;
     private String avatar;
     private String author;
-    @ManyToMany
-    private  List<Singer>singers;
+
     @ManyToOne
     private User user;
     @ManyToOne
     private SongCategory songCategory;
-    @ManyToOne
-    private Reaction reaction;
+
     @ManyToMany
     private List<Playlist> playlist;
 
@@ -32,11 +29,13 @@ public class Song {
         this.mp3 = mp3;
         this.avatar = avatar;
         this.author = author;
-        this.singers = singers;
         this.user = user;
         this.songCategory = songCategory;
-        this.reaction = reaction;
         this.playlist = playlist;
+    }
+
+    public Song() {
+
     }
 
     public Long getId() {
@@ -87,13 +86,7 @@ public class Song {
         this.author = author;
     }
 
-    public List<Singer> getSingers() {
-        return singers;
-    }
 
-    public void setSingers(List<Singer> singers) {
-        this.singers = singers;
-    }
 
     public User getUser() {
         return user;
@@ -111,13 +104,6 @@ public class Song {
         this.songCategory = songCategory;
     }
 
-    public Reaction getReaction() {
-        return reaction;
-    }
-
-    public void setReaction(Reaction reaction) {
-        this.reaction = reaction;
-    }
 
     public List<Playlist> getPlaylist() {
         return playlist;

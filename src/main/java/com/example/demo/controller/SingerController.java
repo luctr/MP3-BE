@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -54,6 +55,32 @@ public class SingerController {
         }
         singerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<Singer>> findAllSinger() {
+        List<Singer> singers = (List<Singer>) singerService.findAll();
+        if (singers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(singers, HttpStatus.OK);
+    }
+//tìm tên ca sĩ
+    @GetMapping("/keyword")
+    public ResponseEntity<List<Singer>> getSingerByName(String name) {
+        List<Singer> singers =  singerService.getSingerByName(name);
+        if(singers.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(singerService.getSingerByName(name),HttpStatus.OK);
+    }
+//tìm danh sách bài hát theo ca sĩ
+    @GetMapping("/showSongs")
+    public ResponseEntity<List<Singer>> findSongBySinger(String name) {
+        List<Singer> singers =  singerService.getSingerByName(name);
+        if(singers.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(singerService.getSingerByName(name),HttpStatus.OK);
     }
 }
 
