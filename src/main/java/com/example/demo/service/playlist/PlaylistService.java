@@ -1,7 +1,7 @@
 package com.example.demo.service.playlist;
 
-import com.example.demo.model.Comment;
 import com.example.demo.model.Playlist;
+import com.example.demo.model.User;
 import com.example.demo.repository.PlaylistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,8 +22,9 @@ public class PlaylistService implements IPlaylistService{
     }
 
     @Override
-    public void save(Playlist playlist) {
+    public User save(Playlist playlist) {
 
+        return null;
     }
 
     @Override

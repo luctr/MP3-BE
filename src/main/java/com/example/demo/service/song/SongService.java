@@ -1,6 +1,7 @@
 package com.example.demo.service.song;
 
 import com.example.demo.model.Song;
+import com.example.demo.model.User;
 import com.example.demo.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,9 @@ public class SongService implements ISongService{
     }
 
     @Override
-    public void save(Song song) {
+    public User save(Song song) {
         songRepository.save(song);
+        return null;
     }
 
     @Override

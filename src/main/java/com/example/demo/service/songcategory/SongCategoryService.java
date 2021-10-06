@@ -1,8 +1,7 @@
 package com.example.demo.service.songcategory;
 
-import com.example.demo.model.Comment;
 import com.example.demo.model.SongCategory;
-import com.example.demo.repository.CommentRepository;
+import com.example.demo.model.User;
 import com.example.demo.repository.SongCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,8 +22,9 @@ public class SongCategoryService implements ISongCategoryService {
     }
 
     @Override
-    public void save(SongCategory songCategory) {
+    public User save(SongCategory songCategory) {
         songCategoryRepository.save(songCategory);
+        return null;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import java.util.List;
+import com.example.demo.model.User;
+
 import java.util.Optional;
 
 public interface Generic<T> {
@@ -9,7 +10,7 @@ public interface Generic<T> {
 
     Optional<T> findById(Long id);
 
-    void save(T t);
+    User save(T t);
 
     void delete(Long id);
 }
