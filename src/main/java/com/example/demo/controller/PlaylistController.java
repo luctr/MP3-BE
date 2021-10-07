@@ -70,7 +70,7 @@ public class PlaylistController {
 
     // tim kiem playlist theo ten
 
-    @GetMapping("/seach/{name}")
+    @GetMapping("/search/{name}")
     private ResponseEntity<List<Playlist>> findPlaylistByName(@PathVariable("name") String name){
         List<Playlist> playLists = playlistService.findAllByNameContaining(name);
         return new ResponseEntity<>(playLists,HttpStatus.OK);
