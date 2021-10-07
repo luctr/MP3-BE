@@ -58,10 +58,5 @@ public class SingerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/user/{id}")
-    public ResponseEntity<Iterable<Singer>> findAllUser(@PathVariable Long id) {
-        Iterable<Singer> singerIterable = singerService.findAllByUser_Id(id);
-        return new ResponseEntity<>(singerIterable, HttpStatus.OK);
-    }
 }
 

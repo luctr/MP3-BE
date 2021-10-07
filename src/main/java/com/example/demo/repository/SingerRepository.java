@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SingerRepository extends JpaRepository<Singer,Long> {
-    Iterable<Singer> findAllByUser_Id(Long id);
 }

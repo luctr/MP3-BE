@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
+import lombok.*;
+
 import javax.persistence.*;
+
 @Entity
 
 public class Comment {

@@ -1,9 +1,8 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -13,21 +12,19 @@ public class User {
     private String username;
     private String password;
     private String phoneNumber;
-
-    public User(String username, String password, String phoneNumber) {
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public User(Long id, String username, String password, String phoneNumber) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            inverseJoinColumns = @JoinColumn(name = "role_id"),
+            joinColumns = @JoinColumn(name = "user_id"))
+    Set<Role> roles = new HashSet<>();
 
     public User() {
+    }
+
+    public User(String username,String encode,String phoneNumber) {
+        this.username = username;
+        this.password = encode;
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -60,5 +57,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
