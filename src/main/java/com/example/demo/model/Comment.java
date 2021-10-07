@@ -6,26 +6,32 @@ import javax.persistence.*;
 
 @Entity
 
-
-
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToOne
+    @ManyToOne
     private User user;
-    @OneToOne
+    @ManyToOne
     private Song song;
 
-    public Comment() {
-    }
 
     public Comment(Long id, String name, User user, Song song) {
         this.id = id;
         this.name = name;
         this.user = user;
         this.song = song;
+    }
+
+
+    public Comment(String name, User user, Song song) {
+        this.name = name;
+        this.user = user;
+        this.song = song;
+    }
+
+    public Comment() {
     }
 
     public Long getId() {

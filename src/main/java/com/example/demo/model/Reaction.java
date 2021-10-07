@@ -16,14 +16,17 @@ public class Reaction {
     @ManyToOne
     private Song song;
 
-    public Reaction() {
-    }
 
-    public Reaction(Long id, User user, Song song) {
-        this.id = id;
+    public Reaction(Boolean status, User user, Song song) {
+        this.status = status;
         this.user = user;
         this.song = song;
     }
+
+    public Reaction() {
+
+    }
+
 
     public Long getId() {
         return id;
@@ -32,6 +35,7 @@ public class Reaction {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public User getUser() {
         return user;

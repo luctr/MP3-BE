@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 
 import javax.persistence.*;
-import java.util.List;
+
 @Entity
 public class Song {
     @Id
@@ -19,10 +19,10 @@ public class Song {
     @ManyToOne
     private SongCategory songCategory;
 
-    @ManyToMany
-    private List<Playlist> playlist;
+    @ManyToOne
+    private Singer singer;
 
-    public Song(Long id, String name, String description, String mp3, String avatar, String author, List<Singer> singers, User user, SongCategory songCategory, Reaction reaction, List<Playlist> playlist) {
+    public Song(Long id, String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -31,12 +31,25 @@ public class Song {
         this.author = author;
         this.user = user;
         this.songCategory = songCategory;
-        this.playlist = playlist;
+
+        this.singer = singer;
+    }
+
+    public Song(String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
+        this.name = name;
+        this.description = description;
+        this.mp3 = mp3;
+        this.avatar = avatar;
+        this.author = author;
+        this.user = user;
+        this.songCategory = songCategory;
+        this.singer = singer;
     }
 
     public Song() {
-
     }
+
+
 
     public Long getId() {
         return id;
@@ -86,8 +99,6 @@ public class Song {
         this.author = author;
     }
 
-
-
     public User getUser() {
         return user;
     }
@@ -105,11 +116,8 @@ public class Song {
     }
 
 
-    public List<Playlist> getPlaylist() {
-        return playlist;
-    }
 
-    public void setPlaylist(List<Playlist> playlist) {
-        this.playlist = playlist;
+    public void setSinger(Singer singer) {
+        this.singer = singer;
     }
 }

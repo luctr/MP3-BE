@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-
 public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,15 +14,19 @@ public class Playlist {
     @ManyToOne
     private SongCategory songCategory;
     private String description;
+    @ManyToMany
+    private List<Song> song;
 
-    public Playlist(Long id, String name, Song song) {
-        this.id = id;
-        this.name = name;
-
-
-    }
 
     public Playlist() {
+    }
+
+    public Playlist(Long id, String name, SongCategory songCategory, String description, List<Song> song) {
+        this.id = id;
+        this.name = name;
+        this.songCategory = songCategory;
+        this.description = description;
+        this.song = song;
     }
 
     public Long getId() {
@@ -42,9 +45,27 @@ public class Playlist {
         this.name = name;
     }
 
+    public SongCategory getSongCategory() {
+        return songCategory;
+    }
 
+    public void setSongCategory(SongCategory songCategory) {
+        this.songCategory = songCategory;
+    }
 
-    @ManyToMany
-    private List<Song> song;
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Song> getSong() {
+        return song;
+    }
+
+    public void setSong(List<Song> song) {
+        this.song = song;
+    }
 }

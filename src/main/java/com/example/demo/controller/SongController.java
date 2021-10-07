@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Singer;
+
+import com.example.demo.model.Playlist;
 import com.example.demo.model.Song;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.service.song.SongService;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import java.util.Optional;
 
 @RestController
@@ -49,16 +52,7 @@ public class SongController {
         return new ResponseEntity<>(songOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/edit")
-    public ResponseEntity<Song> updateSongs(@PathVariable Long id, @RequestBody Song song) {
-        Optional<Song> songOptional = songService.findById(id);
-        if (!songOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-//        song.setId(songOptional.get().getId());
-        songService.save(song);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+
 
 
     @GetMapping("/{id}")

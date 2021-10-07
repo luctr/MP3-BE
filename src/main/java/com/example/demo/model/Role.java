@@ -1,30 +1,24 @@
 package com.example.demo.model;
 
-import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.NaturalId;
+import javax.persistence.*;
 
 @Entity
-
-public class SongCategory {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    private RoleName name;
 
-
-    public SongCategory(Long id, String name) {
+    public Role(Long id, RoleName name) {
         this.id = id;
         this.name = name;
     }
 
-    public SongCategory() {
-
+    public Role() {
     }
-
 
     public Long getId() {
         return id;
@@ -34,11 +28,12 @@ public class SongCategory {
         this.id = id;
     }
 
-    public String getName() {
+    public RoleName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(RoleName name) {
         this.name = name;
     }
 }
+

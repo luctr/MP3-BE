@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
 
-import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,10 +17,34 @@ public class Singer {
     private String yearOfBirth;
     private String musicBand;
     private String MoreInformation ;
+
     @ManyToOne
-    private User user;
-    @ManyToMany
-    private List<Song> songList;
+    private Song songList;
+
+    public Singer(Long id, String name, String sex, String dateOfBirth, String story, String yearOfBirth, String musicBand, String moreInformation) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+        this.story = story;
+        this.yearOfBirth = yearOfBirth;
+        this.musicBand = musicBand;
+        MoreInformation = moreInformation;
+    }
+
+    public Singer(String name, String sex, String dateOfBirth, String story, String yearOfBirth, String musicBand, String moreInformation) {
+        this.name = name;
+        this.sex = sex;
+        this.dateOfBirth = dateOfBirth;
+        this.story = story;
+        this.yearOfBirth = yearOfBirth;
+        this.musicBand = musicBand;
+        MoreInformation = moreInformation;
+    }
+
+    public Singer() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -85,28 +107,5 @@ public class Singer {
 
     public void setMoreInformation(String moreInformation) {
         MoreInformation = moreInformation;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Singer() {
-    }
-
-    public Singer(Long id, String name, String sex, String dateOfBirth, String story, String yearOfBirth, String musicBand, String moreInformation, User user) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.dateOfBirth = dateOfBirth;
-        this.story = story;
-        this.yearOfBirth = yearOfBirth;
-        this.musicBand = musicBand;
-        MoreInformation = moreInformation;
-        this.user = user;
     }
 }
