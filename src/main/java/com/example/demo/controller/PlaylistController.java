@@ -30,15 +30,6 @@ public class PlaylistController {
         playlistService.save(playlist);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping("/edit/{id}")
-    public ResponseEntity<Playlist> PlaylistByID(@PathVariable Long id) {
-        Playlist playList1 = playlistService.findById(id).get();
-        if (playList1 != null) {
-            return new ResponseEntity<>(playList1, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Playlist> deleteById(@PathVariable Long id) {
         Optional<Playlist> playlistOptional = playlistService.findById(id);
@@ -49,12 +40,13 @@ public class PlaylistController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Playlist> editUser(@PathVariable Long id, @RequestBody Playlist playlist){
         Optional< Playlist> playlistOptional = playlistService.findById(id);
         if(!playlistOptional.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        playlist.setId(id);
         playlistService.save(playlist);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -70,10 +62,20 @@ public class PlaylistController {
 
     // tim kiem playlist theo ten
 
-    @GetMapping("/seach/{name}")
-    private ResponseEntity<List<Playlist>> findPlaylistByName(@PathVariable("name") String name){
-        List<Playlist> playLists = playlistService.findAllByNameContaining(name);
+    @GetMapping("/search")
+    private ResponseEntity<List<Playlist>> findPlaylistByName(@RequestParam("name") String name){
+        List<Playlist> playLists = playlistService.findByNameContaining(name);
         return new ResponseEntity<>(playLists,HttpStatus.OK);
     }
+    @GetMapping("/topName")
+    public ResponseEntity<List<Playlist>> topName() {
+        List<Playlist> playListName = playlistService.findTop6ByOrderByNameAsc();
+
+        if (playListName != null) {
+            return new ResponseEntity<>(playListName, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
 }

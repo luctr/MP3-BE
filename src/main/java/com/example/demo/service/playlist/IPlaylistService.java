@@ -6,7 +6,7 @@ import com.example.demo.service.Generic;
 import java.util.List;
 
 public interface IPlaylistService extends Generic<Playlist> {
-    List<Playlist> findTopById(Long id);
+    List<Playlist> findTop6ByOrderByNameAsc();
 
-    List<Playlist> findAllByNameContaining(String name);
+    List<Playlist> findByNameContaining(String name);
 }
