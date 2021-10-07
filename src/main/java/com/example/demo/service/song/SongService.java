@@ -31,4 +31,9 @@ public class SongService implements ISongService{
     public void delete(Long id) {
         songRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<Song> findTop4New() {
+        return songRepository.findTop4New();
+    }
 }

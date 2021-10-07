@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Playlist;
+
 import com.example.demo.model.Song;
 import com.example.demo.service.song.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +56,12 @@ public class SongController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(songOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/top4")
+    public ResponseEntity<Iterable<Song>> findTop4New() {
+        Iterable<Song> songIterable = songService.findTop4New();
+        return new ResponseEntity<>(songIterable, HttpStatus.OK);
     }
 
 }

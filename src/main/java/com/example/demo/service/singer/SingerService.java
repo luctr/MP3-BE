@@ -32,4 +32,5 @@ public class SingerService implements ISingerService{
     public void delete(Long id) {
         singerRepository.deleteById(id);
     }
+
 }
