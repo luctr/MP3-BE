@@ -3,9 +3,10 @@ package com.example.demo.service.reaction;
 import com.example.demo.model.Reaction;
 import com.example.demo.repository.ReactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class ReactionService implements IReactionService {
     @Autowired
     private ReactionRepository reactionRepository;
