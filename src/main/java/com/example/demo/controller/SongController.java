@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Playlist;
+
 import com.example.demo.model.Song;
 import com.example.demo.service.song.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -56,6 +58,17 @@ public class SongController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(songOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/top4")
+    public ResponseEntity<Iterable<Song>> findTop4New() {
+        Iterable<Song> songIterable = songService.findTop4New();
+        return new ResponseEntity<>(songIterable, HttpStatus.OK);
+    }
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Song>> findAllByName(@PathVariable("name") String name) {
+        List<Song> songList = songService.findAllByNameContaining(name);
+        return new ResponseEntity<>(songList, HttpStatus.OK);
     }
 
 }
