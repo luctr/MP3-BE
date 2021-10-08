@@ -1,6 +1,7 @@
 package com.example.demo.service.reaction;
 
 import com.example.demo.model.Reaction;
+import com.example.demo.model.User;
 import com.example.demo.repository.ReactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class ReactionService implements IReactionService {
     @Override
     public void save(Reaction reaction) {
         reactionRepository.save(reaction);
+
     }
 
     @Override
