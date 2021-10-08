@@ -64,5 +64,11 @@ public class SingerController {
         List<Singer> singerList = singerService.findAllByNameContaining(name);
         return new ResponseEntity<>(singerList, HttpStatus.OK);
     }
+
+    @GetMapping("/top7")
+    public ResponseEntity<Iterable<Singer>> findTop7New() {
+        Iterable<Singer> songIterable = singerService.findTop7New();
+        return new ResponseEntity<>(songIterable, HttpStatus.OK);
+    }
 }
 
