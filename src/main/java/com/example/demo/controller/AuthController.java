@@ -40,7 +40,7 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
     @PostMapping("/signup")
-    public ResponseEntity<?> register(@Valid @RequestBody SignUpForm signUpForm){
+    public ResponseEntity<ResponseMessage> register(@Valid @RequestBody SignUpForm signUpForm){
         if(userService.existsByUsername(signUpForm.getUsername())){
             return new ResponseEntity<>(new ResponseMessage("no user"), HttpStatus.OK);
         }
@@ -73,7 +73,7 @@ public class AuthController {
         return new ResponseEntity<>(new ResponseMessage("create success!!!"), HttpStatus.OK);
     }
     @PostMapping("/signin")
-    public ResponseEntity<?> login(@Valid @RequestBody SignInForm signInForm) {
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody SignInForm signInForm) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signInForm.getUsername(), signInForm.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
