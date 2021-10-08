@@ -40,13 +40,12 @@ public class PlaylistController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<Playlist> editUser(@PathVariable Long id, @RequestBody Playlist playlist){
         Optional< Playlist> playlistOptional = playlistService.findById(id);
         if(!playlistOptional.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        playlist.setId(id);
         playlistService.save(playlist);
         return new ResponseEntity<>(HttpStatus.OK);
     }

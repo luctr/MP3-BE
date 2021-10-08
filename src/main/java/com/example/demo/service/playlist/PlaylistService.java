@@ -46,11 +46,10 @@ public class PlaylistService implements IPlaylistService{
     public List<Playlist> findByNameContaining(String name) {
         return playlistRepository.findByNameContaining(name);
     }
-//    public List<Song> addSongToPlaylist(long idPlaylist, long idSong){
-//        Playlist playlist = playlistRepository.findById(idPlaylist).get();
-//        Song song = songRepository.getById(idSong);
-//        playlist.getSong().add(song);
-//        playlistRepository.save(playlist);
-//
-//    }
+    public void addSongToPlaylist(long idPlaylist, long idSong){
+        Playlist playlist = playlistRepository.findById(idPlaylist).get();
+        Song song = songRepository.getById(idSong);
+        playlist.getSong().add(song);
+        playlistRepository.save(playlist);
+    }
 }
