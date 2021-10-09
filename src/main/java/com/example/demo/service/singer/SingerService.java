@@ -1,11 +1,13 @@
 package com.example.demo.service.singer;
 
 import com.example.demo.model.Singer;
+import com.example.demo.model.Song;
 import com.example.demo.model.User;
 import com.example.demo.repository.SingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,5 +33,15 @@ public class SingerService implements ISingerService{
     @Override
     public void delete(Long id) {
         singerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Singer> findAllByNameContaining(String name) {
+        return singerRepository.findAllByNameContaining(name);
+    }
+
+    @Override
+    public Iterable<Singer> findTop7New() {
+        return singerRepository.findTop7New();
     }
 }
