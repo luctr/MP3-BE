@@ -14,7 +14,7 @@ public class Singer {
     private String sex;
     private String dateOfBirth;
     private String story;
-    private String yearOfBirth;
+        private String yearOfBirth;
     private String musicBand;
     private String MoreInformation ;
 
