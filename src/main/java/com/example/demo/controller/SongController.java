@@ -24,7 +24,7 @@ public class SongController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createNewSongs(@RequestBody Song song) {
+    public ResponseEntity<Song> createNewSongs(@RequestBody Song song) {
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -39,14 +39,15 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("edit/{id}")
-    public ResponseEntity<Song> editUser(@PathVariable Long id, @RequestBody Song song){
-        Optional< Song> songOptional = songService.findById(id);
-        if(!songOptional.isPresent()){
+    @PutMapping("/{id}")
+    public ResponseEntity<Song> editProduct(@PathVariable Long id, @RequestBody Song song) {
+        Optional<Song> songOptional = songService.findById(id);
+        if (!songOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        song.setId(id);
         songService.save(song);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -57,5 +58,7 @@ public class SongController {
         }
         return new ResponseEntity<>(songOptional.get(), HttpStatus.OK);
     }
+
+
 
 }

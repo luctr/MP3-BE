@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-
 import com.example.demo.security.jwt.JwtEntryPoint;
 import com.example.demo.security.jwt.JwtTokenFilter;
 import com.example.demo.security.userPrinciple.UserDetailService;
@@ -14,17 +13,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-
-@EnableGlobalMethodSecurity(
-        securedEnabled = true,
-        jsr250Enabled = true,
-        prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailService userDetailsService;
@@ -55,7 +51,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-//                .antMatchers("/playlists/**").permitAll()
+                .antMatchers("/songs/**").permitAll()
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/songCategories/**").permitAll()
+                .antMatchers("/playlists/**").permitAll()
                 .antMatchers("/singer/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
