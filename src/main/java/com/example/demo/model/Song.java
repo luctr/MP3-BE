@@ -19,7 +19,12 @@ public class Song {
     @ManyToOne
     private Singer singer;
 
+    private Long count;
+    public Song(Long id, String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer ,Long count) {
+
+
     public Song(Long id, String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
+
         this.id = id;
         this.name = name;
         this.description = description;
@@ -29,6 +34,21 @@ public class Song {
         this.user = user;
         this.songCategory = songCategory;
         this.singer = singer;
+
+        this.count=count;
+    }
+
+
+    public Song() {
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+
     }
 
     public Song(String name, String description, String mp3, String avatar, String author, User user, SongCategory songCategory, Singer singer) {
@@ -43,6 +63,7 @@ public class Song {
     }
 
     public Song() {
+
     }
 
     public Long getId() {

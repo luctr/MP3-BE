@@ -26,12 +26,12 @@ public class SongService implements ISongService{
 
     @Override
     public void save(Song song) {
-        songRepository.save(song);
+songRepository .save(song);
     }
 
     @Override
     public void delete(Long id) {
-        songRepository.deleteById(id);
+songRepository.deleteById(id);
     }
 
     @Override

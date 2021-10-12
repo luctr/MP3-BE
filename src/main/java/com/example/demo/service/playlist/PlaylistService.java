@@ -17,6 +17,8 @@ public class PlaylistService implements IPlaylistService{
     private SongRepository songRepository;
 
 
+
+
     @Override
     public Iterable<Playlist> findAll() {
         return playlistRepository.findAll();
@@ -38,6 +40,13 @@ public class PlaylistService implements IPlaylistService{
     }
 
     @Override
+    public List<Playlist> findTopById(Long id) {
+        return playlistRepository.findTopById(id);
+    }
+
+    @Override
+    public List<Playlist> findAllByNameContaining(String name) {
+        return playlistRepository.findAllByNameContaining(name);
     public List<Playlist> findTop6ByOrderByNameAsc() {
         return playlistRepository.findTop6ByOrderByNameAsc();
     }

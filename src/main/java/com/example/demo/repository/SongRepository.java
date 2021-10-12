@@ -8,6 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
+import java.util.Optional;
+
+
+@Repository
+public interface SongRepository extends JpaRepository<Song, Long> {
+
+
 import java.util.List;
 
 @Repository
@@ -16,4 +24,5 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     @Query(value = "select * from song order by id desc limit 4", nativeQuery = true)
     Iterable<Song> findTop4New();
     List<Song> findAllByNameContaining(String name);
+
 }

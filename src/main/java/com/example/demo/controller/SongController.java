@@ -1,14 +1,16 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.model.Playlist;
+
+
+
 import com.example.demo.model.Song;
 import com.example.demo.service.song.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,7 +28,7 @@ public class SongController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createNewSongs(@RequestBody Song song) {
+    public ResponseEntity<Song> createNewSongs(@RequestBody Song song) {
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -41,12 +43,19 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Song> editProduct(@PathVariable Long id, @RequestBody Song song) {
+        Optional<Song> songOptional = songService.findById(id);
+        if (!songOptional.isPresent()) {
+
     @PutMapping("edit/{id}")
     public ResponseEntity<Song> editUser(@PathVariable Long id, @RequestBody Song song){
         Optional< Song> songOptional = songService.findById(id);
         if(!songOptional.isPresent()){
+
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        song.setId(id);
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -60,6 +69,8 @@ public class SongController {
         return new ResponseEntity<>(songOptional.get(), HttpStatus.OK);
     }
 
+
+
     @GetMapping("/top4")
     public ResponseEntity<Iterable<Song>> findTop4New() {
         Iterable<Song> songIterable = songService.findTop4New();
@@ -70,6 +81,7 @@ public class SongController {
         List<Song> songList = songService.findAllByNameContaining(name);
         return new ResponseEntity<>(songList, HttpStatus.OK);
     }
+
 
 
 }
