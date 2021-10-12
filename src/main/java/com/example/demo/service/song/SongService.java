@@ -5,6 +5,8 @@ import com.example.demo.model.User;
 import com.example.demo.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +32,15 @@ songRepository .save(song);
     @Override
     public void delete(Long id) {
 songRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Song> findTop4New() {
+        return songRepository.findTop4New();
+    }
+
+    @Override
+    public List<Song> findAllByNameContaining(String name) {
+        return songRepository.findAllByNameContaining(name);
     }
 }

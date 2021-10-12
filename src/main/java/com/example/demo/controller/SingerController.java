@@ -1,11 +1,17 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Singer;
+
+
+import com.example.demo.model.Song;
+
 import com.example.demo.service.singer.ISingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import java.util.Optional;
 
@@ -15,11 +21,20 @@ import java.util.Optional;
 public class SingerController {
     @Autowired
     private ISingerService singerService;
+
     @GetMapping
     public ResponseEntity<Iterable<Singer>> findAll(){
         Iterable<Singer> singerIterable= singerService.findAll();
         return new ResponseEntity<>(singerIterable, HttpStatus.OK);
     }
+
+    @GetMapping
+    public ResponseEntity<Iterable<Singer>> findAll() {
+        Iterable<Singer> singerIterable = singerService.findAll();
+        return new ResponseEntity<>(singerIterable, HttpStatus.OK);
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Singer> findById(@PathVariable Long id) {
         Optional<Singer> singerOptional = singerService.findById(id);
@@ -36,9 +51,15 @@ public class SingerController {
     }
 
     @PutMapping("/{id}")
+
     public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer){
         Optional< Singer> singerOptional = singerService.findById(id);
         if(!singerOptional.isPresent()){
+
+    public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer) {
+        Optional<Singer> singerOptional = singerService.findById(id);
+        if (!singerOptional.isPresent()) {
+
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         singer.setId(id);
@@ -47,13 +68,32 @@ public class SingerController {
     }
 
     @DeleteMapping("/{id}")
+
     public ResponseEntity<Singer> deleteById(@PathVariable Long id){
         Optional<Singer> singerOptional = singerService.findById(id);
         if(!singerOptional.isPresent()){
+
+    public ResponseEntity<Singer> deleteById(@PathVariable Long id) {
+        Optional<Singer> singerOptional = singerService.findById(id);
+        if (!singerOptional.isPresent()) {
+
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         singerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Singer>> findAllByName(@PathVariable("name") String name) {
+        List<Singer> singerList = singerService.findAllByNameContaining(name);
+        return new ResponseEntity<>(singerList, HttpStatus.OK);
+    }
+
+    @GetMapping("/top7")
+    public ResponseEntity<Iterable<Singer>> findTop7New() {
+        Iterable<Singer> songIterable = singerService.findTop7New();
+        return new ResponseEntity<>(songIterable, HttpStatus.OK);
+    }
+
 }
 

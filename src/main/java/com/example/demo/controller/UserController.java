@@ -28,6 +28,7 @@ public class UserController {
         }
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
+
     @GetMapping("/searchUserName/{name}")
     public ResponseEntity<User> findByName(@PathVariable String name) {
         Optional<User> userOptional = userService.findByUsername(name);
@@ -36,6 +37,9 @@ public class UserController {
         }
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
+
+
+
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user) {
         userService.save(user);
