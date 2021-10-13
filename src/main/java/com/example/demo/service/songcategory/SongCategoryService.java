@@ -1,12 +1,12 @@
 package com.example.demo.service.songcategory;
 
 import com.example.demo.model.SongCategory;
-import com.example.demo.model.User;
 import com.example.demo.repository.SongCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class SongCategoryService implements ISongCategoryService {
     @Autowired
     private SongCategoryRepository songCategoryRepository;
