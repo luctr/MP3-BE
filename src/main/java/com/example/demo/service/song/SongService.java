@@ -39,4 +39,9 @@ public class SongService implements ISongService{
     public List<Song> getSongByName(String name) {
         return songRepository.findByNameContaining(name);
     }
+
+    @Override
+    public List<Song> topSong() {
+        return songRepository.topSong();
+    }
 }

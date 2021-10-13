@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song,Long> {
     List<Song> findByNameContaining(String keywords);
+    @Query(" SELECT c FROM Song c ORDER BY c.count DESC")
+    List<Song> topSong();
 }

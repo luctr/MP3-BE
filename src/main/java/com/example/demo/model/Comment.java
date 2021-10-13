@@ -3,6 +3,7 @@ package com.example.demo.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -11,27 +12,23 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private boolean complete;
     @ManyToOne
     private User user;
     @ManyToOne
     private Song song;
 
 
-    public Comment(Long id, String name, User user, Song song) {
-        this.id = id;
-        this.name = name;
-        this.user = user;
-        this.song = song;
-    }
-
-
-    public Comment(String name, User user, Song song) {
-        this.name = name;
-        this.user = user;
-        this.song = song;
-    }
 
     public Comment() {
+    }
+
+    public Comment(Long id, String name, boolean complete, User user, Song song) {
+        this.id = id;
+        this.name = name;
+        this.complete = complete;
+        this.user = user;
+        this.song = song;
     }
 
     public Long getId() {
@@ -48,6 +45,14 @@ public class Comment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
     public User getUser() {

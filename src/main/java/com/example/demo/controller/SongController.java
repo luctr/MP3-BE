@@ -56,7 +56,7 @@ public class SongController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Song> findCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Song> findSongById(@PathVariable Long id) {
         Optional<Song> customerOptional = songService.findById(id);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -69,5 +69,14 @@ public class SongController {
     public ResponseEntity<List<Song>> getSongByName(@RequestParam String name) {
         return new ResponseEntity<>(songService.getSongByName(name),HttpStatus.OK);
 
+    }
+
+    @GetMapping("/topsong")
+    public ResponseEntity<List<Song>> getTopSong() {
+        List<Song> songs =  songService.topSong();
+        if (songs.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 }
