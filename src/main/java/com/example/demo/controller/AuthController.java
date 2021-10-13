@@ -65,30 +65,6 @@ public class AuthController {
             }
         });
 
-        Set<Role> roles = new HashSet<>();
-        if (signUpForm.getRoles() == null){
-            Role userRole = roleService.findByName(RoleName.USER).orElseThrow(()->new RuntimeException("ROLE NOT FOUND"));
-            roles.add(userRole);
-        }else {
-            Set<String> strRoles = signUpForm.getRoles();
-            strRoles.forEach(role ->{
-                switch (role){
-                    case "admin":
-                        Role adminRole = roleService.findByName(RoleName.ADMIN).orElseThrow(()->
-                                new RuntimeException("Role NOT FOUND"));
-                        roles.add(adminRole);
-                        break;
-                    case "pm":
-                        Role pmRole = roleService.findByName(RoleName.PM).orElseThrow(
-                                ()-> new RuntimeException("Role NOT FOUND"));
-                        roles.add(pmRole);
-                        break;
-                    default: Role userRole = roleService.findByName(RoleName.USER).orElseThrow(()->new RuntimeException("ROLE NOT FOUND"));
-                        roles.add(userRole);
-                }
-            });
-        }
-
         user.setRoles(roles);
         userService.save(user);
         return new ResponseEntity<>(new ResponseMessage("create success!!!"), HttpStatus.OK);

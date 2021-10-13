@@ -51,19 +51,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-<<<<<<< HEAD
+
                 .antMatchers("/songs/**").permitAll()
-=======
+
 
                 .antMatchers("/songs/**").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/songCategories/**").permitAll()
                 .antMatchers("/playlists/**").permitAll()
-
-//                .antMatchers("/playlists/**").permitAll()
-
                 .antMatchers("/singer/**").permitAll()
->>>>>>> hiep1
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()

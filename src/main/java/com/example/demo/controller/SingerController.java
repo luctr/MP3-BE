@@ -12,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-<<<<<<< HEAD
-=======
 
->>>>>>> hiep1
 import java.util.Optional;
 
 @RestController
@@ -24,12 +21,6 @@ import java.util.Optional;
 public class SingerController {
     @Autowired
     private ISingerService singerService;
-
-    @GetMapping
-    public ResponseEntity<Iterable<Singer>> findAll(){
-        Iterable<Singer> singerIterable= singerService.findAll();
-        return new ResponseEntity<>(singerIterable, HttpStatus.OK);
-    }
 
     @GetMapping
     public ResponseEntity<Iterable<Singer>> findAll() {
@@ -55,9 +46,7 @@ public class SingerController {
 
     @PutMapping("/{id}")
 
-    public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer){
-        Optional< Singer> singerOptional = singerService.findById(id);
-        if(!singerOptional.isPresent()){
+
 
     public ResponseEntity<Singer> editSinger(@PathVariable Long id, @RequestBody Singer singer) {
         Optional<Singer> singerOptional = singerService.findById(id);
@@ -72,9 +61,6 @@ public class SingerController {
 
     @DeleteMapping("/{id}")
 
-    public ResponseEntity<Singer> deleteById(@PathVariable Long id){
-        Optional<Singer> singerOptional = singerService.findById(id);
-        if(!singerOptional.isPresent()){
 
     public ResponseEntity<Singer> deleteById(@PathVariable Long id) {
         Optional<Singer> singerOptional = singerService.findById(id);
@@ -85,7 +71,7 @@ public class SingerController {
         singerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-<<<<<<< HEAD
+
     @GetMapping("/all")
     public ResponseEntity<Iterable<Singer>> findAllSinger() {
         List<Singer> singers = (List<Singer>) singerService.findAll();
@@ -112,7 +98,7 @@ public class SingerController {
         }
         return new ResponseEntity<>(singerService.getSingerByName(name),HttpStatus.OK);
     }
-=======
+
 
     @GetMapping("/search/{name}")
     public ResponseEntity<List<Singer>> findAllByName(@PathVariable("name") String name) {
@@ -126,6 +112,5 @@ public class SingerController {
         return new ResponseEntity<>(songIterable, HttpStatus.OK);
     }
 
->>>>>>> hiep1
 }
 

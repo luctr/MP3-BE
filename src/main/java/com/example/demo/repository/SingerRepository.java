@@ -9,12 +9,10 @@ import java.util.List;
 
 @Repository
 public interface SingerRepository extends JpaRepository<Singer,Long> {
-<<<<<<< HEAD
+
     List<Singer> findByName(String keyword);
 
-=======
     List<Singer> findAllByNameContaining(String name);
     @Query(value = "select * from singer order by id desc limit 7", nativeQuery = true)
     Iterable<Singer> findTop7New();
->>>>>>> hiep1
 }
