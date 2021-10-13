@@ -1,5 +1,6 @@
 package com.example.demo.service.singer;
 
+import com.example.demo.model.Playlist;
 import com.example.demo.model.Singer;
 import com.example.demo.model.Song;
 import com.example.demo.service.Generic;
@@ -7,6 +8,11 @@ import com.example.demo.service.Generic;
 import java.util.List;
 
 public interface ISingerService extends Generic<Singer> {
+<<<<<<< HEAD
     List<Singer> getSingerByName(String name);
 
+=======
+    List<Singer> findAllByNameContaining(String name);
+    Iterable<Singer> findTop7New();
+>>>>>>> hiep1
 }

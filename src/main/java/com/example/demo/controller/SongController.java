@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Playlist;
+
+
+
 import com.example.demo.model.Song;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.service.song.SongService;
@@ -37,7 +40,11 @@ public class SongController {
     }
 
     @PostMapping
+<<<<<<< HEAD
     public ResponseEntity<Song> saveSongs(@RequestBody Song song) {
+=======
+    public ResponseEntity<Song> createNewSongs(@RequestBody Song song) {
+>>>>>>> hiep1
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -52,8 +59,27 @@ public class SongController {
         return new ResponseEntity<>(songOptional.get(), HttpStatus.NO_CONTENT);
     }
 
+<<<<<<< HEAD
 
 
+=======
+    @PutMapping("/{id}")
+    public ResponseEntity<Song> editProduct(@PathVariable Long id, @RequestBody Song song) {
+        Optional<Song> songOptional = songService.findById(id);
+        if (!songOptional.isPresent()) {
+
+    @PutMapping("edit/{id}")
+    public ResponseEntity<Song> editUser(@PathVariable Long id, @RequestBody Song song){
+        Optional< Song> songOptional = songService.findById(id);
+        if(!songOptional.isPresent()){
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        song.setId(id);
+        songService.save(song);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+>>>>>>> hiep1
 
     @GetMapping("/{id}")
     public ResponseEntity<Song> findSongById(@PathVariable Long id) {
@@ -71,6 +97,7 @@ public class SongController {
 
     }
 
+<<<<<<< HEAD
     @GetMapping("/topsong")
     public ResponseEntity<List<Song>> getTopSong() {
         List<Song> songs =  songService.topSong();
@@ -79,4 +106,21 @@ public class SongController {
         }
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
+=======
+
+
+    @GetMapping("/top4")
+    public ResponseEntity<Iterable<Song>> findTop4New() {
+        Iterable<Song> songIterable = songService.findTop4New();
+        return new ResponseEntity<>(songIterable, HttpStatus.OK);
+    }
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Song>> findAllByName(@PathVariable("name") String name) {
+        List<Song> songList = songService.findAllByNameContaining(name);
+        return new ResponseEntity<>(songList, HttpStatus.OK);
+    }
+
+
+
+>>>>>>> hiep1
 }

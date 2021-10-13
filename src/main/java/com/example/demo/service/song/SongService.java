@@ -26,12 +26,22 @@ public class SongService implements ISongService{
 
     @Override
     public void save(Song song) {
-        songRepository.save(song);
+songRepository .save(song);
     }
 
     @Override
     public void delete(Long id) {
-        songRepository.deleteById(id);
+songRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Song> findTop4New() {
+        return songRepository.findTop4New();
+    }
+
+    @Override
+    public List<Song> findAllByNameContaining(String name) {
+        return songRepository.findAllByNameContaining(name);
     }
 
 
