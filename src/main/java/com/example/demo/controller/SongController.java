@@ -60,13 +60,13 @@ public class SongController {
         return new ResponseEntity<>(songOptional.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/top4")
-    public ResponseEntity<Iterable<Song>> findTop4New() {
-        Iterable<Song> songIterable = songService.findTop4New();
+    @GetMapping("/top6")
+    public ResponseEntity<Iterable<Song>> findTop6New() {
+        Iterable<Song> songIterable = songService.findTop6New();
         return new ResponseEntity<>(songIterable, HttpStatus.OK);
     }
     @GetMapping("/search/{name}")
-    public ResponseEntity<List<Song>> findAllByName(@PathVariable("name") String name) {
+    public ResponseEntity<List<Song>> findAllByName(@PathVariable String name) {
         List<Song> songList = songService.findAllByNameContaining(name);
         return new ResponseEntity<>(songList, HttpStatus.OK);
     }

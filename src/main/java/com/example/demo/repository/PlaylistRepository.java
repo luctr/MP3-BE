@@ -10,8 +10,6 @@ import java.util.List;
 @Repository
 public interface PlaylistRepository extends JpaRepository<Playlist,Long> {
     List<Playlist> findTopById(Long id);
-
     List<Playlist> findAllByNameContaining(String name);
-
-
+    List<Playlist> findAllSongBySong_id(String name);
 }

@@ -35,8 +35,8 @@ public class SongService implements ISongService{
     }
 
     @Override
-    public Iterable<Song> findTop4New() {
-        return songRepository.findTop4New();
+    public Iterable<Song> findTop6New() {
+        return songRepository.findTop6New();
     }
 
     @Override

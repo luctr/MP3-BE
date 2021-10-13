@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song, Long> {
     @Modifying
-    @Query(value = "select * from song order by id desc limit 4", nativeQuery = true)
-    Iterable<Song> findTop4New();
+    @Query(value = "select * from song order by id desc limit 6", nativeQuery = true)
+    Iterable<Song> findTop6New();
     List<Song> findAllByNameContaining(String name);
 }
