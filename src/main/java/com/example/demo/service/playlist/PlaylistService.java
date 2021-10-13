@@ -1,6 +1,7 @@
 package com.example.demo.service.playlist;
 
 import com.example.demo.model.Playlist;
+import com.example.demo.model.Song;
 import com.example.demo.repository.PlaylistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,9 @@ public class PlaylistService implements IPlaylistService{
     public List<Playlist> findAllByNameContaining(String name) {
         return playlistRepository.findAllByNameContaining(name);
     }
+
+//    @Override
+//    public List<Song> findAllSongByPlayList(Long id) {
+//        return playlistRepository.findAllSongByPlayList(id);
+//    }
 }

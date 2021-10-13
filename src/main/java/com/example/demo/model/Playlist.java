@@ -13,7 +13,7 @@ public class Playlist {
     private String description;
     @ManyToOne
     private User user;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Song> song;
 
     public Playlist(Long id, String name, SongCategory songCategory, String description, User user, List<Song> song) {

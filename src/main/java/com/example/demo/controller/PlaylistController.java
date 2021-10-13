@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Playlist;
+import com.example.demo.model.Song;
 import com.example.demo.model.User;
 import com.example.demo.service.playlist.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,11 @@ public class PlaylistController {
         List<Playlist> playLists = playlistService.findAllByNameContaining(name);
         return new ResponseEntity<>(playLists,HttpStatus.OK);
     }
+    //Tìm kiếm danh sách bài hát trong playList
+//    @GetMapping("/songList/{id}")
+//    private ResponseEntity<List<Song>> findAllSongByPlayList(@PathVariable("id") Long id){
+//        List<Song> songList = playlistService.findAllSongByPlayList(id);
+//        return new ResponseEntity<>(songList,HttpStatus.OK);
+//    }
 
 }
