@@ -47,6 +47,7 @@ public class PlaylistService implements IPlaylistService{
     @Override
     public List<Playlist> findAllByNameContaining(String name) {
         return playlistRepository.findAllByNameContaining(name);
+    }
     public List<Playlist> findTop6ByOrderByNameAsc() {
         return playlistRepository.findTop6ByOrderByNameAsc();
     }

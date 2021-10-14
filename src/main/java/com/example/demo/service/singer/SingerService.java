@@ -38,10 +38,9 @@ public class SingerService implements ISingerService{
     }
 
     @Override
-<<<<<<< HEAD
     public List<Singer> getSingerByName(String name) {
         return singerRepository.findByName(name);
-=======
+    }
     public List<Singer> findAllByNameContaining(String name) {
         return singerRepository.findAllByNameContaining(name);
     }
@@ -49,6 +48,5 @@ public class SingerService implements ISingerService{
     @Override
     public Iterable<Singer> findTop7New() {
         return singerRepository.findTop7New();
->>>>>>> hiep1
     }
 }
