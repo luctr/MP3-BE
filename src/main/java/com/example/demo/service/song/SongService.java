@@ -34,9 +34,9 @@ songRepository .save(song);
 songRepository.deleteById(id);
     }
 
-    @Override
-    public Iterable<Song> findTop4New() {
-        return songRepository.findTop4New();
+
+    public Iterable<Song> findTop6New() {
+        return songRepository.findTop6New();
     }
 
     @Override
@@ -44,6 +44,11 @@ songRepository.deleteById(id);
         return songRepository.findAllByNameContaining(name);
     }
 
+
+    @Override
+    public Iterable<Song> findTop4New() {
+        return null;
+    }
 
     @Override
     public List<Song> getSongByName(String name) {

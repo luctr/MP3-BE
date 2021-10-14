@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Playlist;
+import com.example.demo.model.Song;
 import com.example.demo.model.User;
 import com.example.demo.service.playlist.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,6 @@ public class PlaylistController {
         playlistService.save(playlist);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
     @GetMapping("/edit/{id}")
     public ResponseEntity<Playlist> PlaylistByID(@PathVariable Long id) {
         Playlist playList1 = playlistService.findById(id).get();
@@ -39,7 +39,6 @@ public class PlaylistController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Playlist> deleteById(@PathVariable Long id) {
@@ -72,24 +71,16 @@ public class PlaylistController {
 
     // tim kiem playlist theo ten
 
-
-
-
-    @GetMapping("/search")
-    private ResponseEntity<List<Playlist>> findPlaylistByName(@RequestParam("name") String name){
-        List<Playlist> playLists = playlistService.findByNameContaining(name);
+    @GetMapping("/search/{name}")
+    private ResponseEntity<List<Playlist>> findPlaylistByName(@PathVariable("name") String name){
+        List<Playlist> playLists = playlistService.findAllByNameContaining(name);
         return new ResponseEntity<>(playLists,HttpStatus.OK);
     }
-    @GetMapping("/topName")
-    public ResponseEntity<List<Playlist>> topName() {
-        List<Playlist> playListName = playlistService.findTop6ByOrderByNameAsc();
-
-        if (playListName != null) {
-            return new ResponseEntity<>(playListName, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-
+    //Tìm kiếm danh sách bài hát trong playList
+//    @GetMapping("/songList/{id}")
+//    private ResponseEntity<List<Song>> findAllSongByPlayList(@PathVariable("id") Long id){
+//        List<Song> songList = playlistService.findAllSongByPlayList(id);
+//        return new ResponseEntity<>(songList,HttpStatus.OK);
+//    }
 
 }

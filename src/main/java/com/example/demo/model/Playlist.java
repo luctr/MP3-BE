@@ -1,7 +1,4 @@
 package com.example.demo.model;
-
-import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,19 +11,29 @@ public class Playlist {
     @ManyToOne
     private SongCategory songCategory;
     private String description;
-    @ManyToMany
+    @ManyToOne
+    private User user;
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Song> song;
 
-
-    public Playlist() {
-    }
-
-    public Playlist(Long id, String name, SongCategory songCategory, String description, List<Song> song) {
+    public Playlist(Long id, String name, SongCategory songCategory, String description, User user, List<Song> song) {
         this.id = id;
         this.name = name;
         this.songCategory = songCategory;
         this.description = description;
+        this.user = user;
         this.song = song;
+    }
+
+    public Playlist(String name, SongCategory songCategory, String description, User user, List<Song> song) {
+        this.name = name;
+        this.songCategory = songCategory;
+        this.description = description;
+        this.user = user;
+        this.song = song;
+    }
+
+    public Playlist() {
     }
 
     public Long getId() {
@@ -59,6 +66,14 @@ public class Playlist {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Song> getSong() {
