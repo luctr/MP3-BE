@@ -16,4 +16,5 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     @Query(value = "select * from song order by id desc limit 6", nativeQuery = true)
     Iterable<Song> findTop6New();
     List<Song> findAllByNameContaining(String name);
+    List<Song> findAllByUser_Id(Long id);
 }

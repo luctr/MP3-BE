@@ -10,4 +10,5 @@ import java.util.List;
 public interface ISongService extends Generic<Song> {
     Iterable<Song> findTop6New();
     List<Song> findAllByNameContaining(String name);
+    List<Song> findAllByUser_Id(Long id);
 }

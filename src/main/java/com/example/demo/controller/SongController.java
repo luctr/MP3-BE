@@ -71,4 +71,9 @@ public class SongController {
         return new ResponseEntity<>(songList, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Song>> findAllByUser_id(@PathVariable Long id) {
+        List<Song> songList = songService.findAllByUser_Id(id);
+        return new ResponseEntity<>(songList, HttpStatus.OK);
+    }
 }

@@ -43,4 +43,9 @@ public class SongService implements ISongService{
     public List<Song> findAllByNameContaining(String name) {
         return songRepository.findAllByNameContaining(name);
     }
+
+    @Override
+    public List<Song> findAllByUser_Id(Long id) {
+        return songRepository.findAllByUser_Id(id);
+    }
 }
