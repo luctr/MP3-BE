@@ -8,11 +8,8 @@ import com.example.demo.service.Generic;
 import java.util.List;
 
 public interface ISingerService extends Generic<Singer> {
-<<<<<<< HEAD
     List<Singer> getSingerByName(String name);
 
-=======
     List<Singer> findAllByNameContaining(String name);
     Iterable<Singer> findTop7New();
->>>>>>> hiep1
 }

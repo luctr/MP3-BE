@@ -47,14 +47,18 @@ public class PlaylistService implements IPlaylistService{
     @Override
     public List<Playlist> findAllByNameContaining(String name) {
         return playlistRepository.findAllByNameContaining(name);
+    }
+
+    @Override
     public List<Playlist> findTop6ByOrderByNameAsc() {
-        return playlistRepository.findTop6ByOrderByNameAsc();
+        return null;
     }
 
     @Override
     public List<Playlist> findByNameContaining(String name) {
-        return playlistRepository.findByNameContaining(name);
+        return null;
     }
+
     public void addSongToPlaylist(long idPlaylist, long idSong){
         Playlist playlist = playlistRepository.findById(idPlaylist).get();
         Song song = songRepository.getById(idSong);
