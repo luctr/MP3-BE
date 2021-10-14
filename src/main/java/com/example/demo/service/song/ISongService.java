@@ -14,4 +14,5 @@ public interface ISongService extends Generic<Song> {
     List<Song> topSong();
 
     List<Song> findAllByNameContaining(String name);
+    List<Song> findAllByUser_Id(Long id);
 }
